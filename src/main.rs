@@ -1,32 +1,16 @@
 use leptos::*;
 
 #[component]
-/*
-fn ProgressBar<F>(
+fn ProgressBar(
     #[prop(default = 100)]
     max: u16,
-    progress: F
+    #[prop(into)]
+    progress: Signal<i32>
 ) -> impl IntoView 
-where
-    F: Fn() -> i32 + 'static,
 {
-    view! {
-        <progress
-            max=max
-            value=progress
-        />
-    }
-}
-*/
-fn ProgressBar<F: Fn() -> i32 + 'static>(
-    // mark this prop optional 
-    #[prop(default = 100)] max: u16,
-    progress: F,
-    ) -> impl IntoView {
     view! {
         <progress 
             max=max
-            
             value=progress
         />
     }
@@ -51,7 +35,7 @@ fn App() -> impl IntoView {
         </button>
         <ProgressBar progress=count/>
         // second progress bar
-        <ProgressBar progress=double_count/>
+        <ProgressBar progress=Signal::derive(double_count)/>
     }
 }
 
