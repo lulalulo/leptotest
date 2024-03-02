@@ -3,7 +3,7 @@ use leptos::*;
 #[component]
 fn ProgressBar(
     // mark this prop optional 
-    #[prop(optional)]
+    #[prop(default = 100)]
     max: u16,
     progress: ReadSignal<i32>
     ) -> impl IntoView {
