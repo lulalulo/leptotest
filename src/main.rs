@@ -23,12 +23,12 @@ fn App() -> impl IntoView {
                 //set_count.set(3)
                 set_count.update(|n| *n += 1);
             }
-            class:red=move || count.get() % 2 == 1
         >
             "Click me: "
             //{move || count.get();}
             //{move || count()}
         </button>
+        <ProgressBar progress=count/>
     }
 }
 
