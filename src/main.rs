@@ -19,6 +19,8 @@ fn ProgressBar(
 #[component]
 fn App() -> impl IntoView {
     let (count, set_count) = create_signal(0);
+    let double_count = move || count() * 2;
+
     view! {
         <button 
             on:click=move |_| {
@@ -32,6 +34,8 @@ fn App() -> impl IntoView {
             //{move || count()}
         </button>
         <ProgressBar progress=count/>
+        // second progress bar
+        <ProgressBar progress=double_count/>
     }
 }
 
