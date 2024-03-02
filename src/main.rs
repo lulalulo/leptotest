@@ -1,4 +1,16 @@
 use leptos::*;
+
+#[component]
+fn ProgressBar() -> impl IntoView {
+    view! {
+        <progress 
+            max="50"
+            
+            value=progress
+        />
+    }
+}
+
 #[component]
 fn App() -> impl IntoView {
     let (count, set_count) = create_signal(0);
