@@ -1,7 +1,9 @@
 use leptos::*;
 
 #[component]
-fn ProgressBar() -> impl IntoView {
+fn ProgressBar(
+    progress: ReadSignal<i32>
+    ) -> impl IntoView {
     view! {
         <progress 
             max="50"
