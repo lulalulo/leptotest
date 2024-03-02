@@ -2,11 +2,14 @@ use leptos::*;
 
 #[component]
 fn ProgressBar(
+    // mark this prop optional 
+    #[prop(optional)]
+    max: u16,
     progress: ReadSignal<i32>
     ) -> impl IntoView {
     view! {
         <progress 
-            max="50"
+            max=max
             
             value=progress
         />
