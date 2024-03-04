@@ -17,7 +17,7 @@ fn App() -> impl IntoView {
         DatabaseEntry {
             key: "bar".to_string(),
             value: 20,
-        }
+        },
         DatabaseEntry {
             key: "baz".to_string(),
             value: 15,
