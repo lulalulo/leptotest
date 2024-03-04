@@ -38,7 +38,7 @@ fn App() -> impl IntoView {
         // iterate over the rows and display each value
         <For 
             each=data
-            key=|state| state.key.clone()
+            key=|state| (state.key.clone(), state.value)
             let:child
         >
             <p>{child.value}</p>
