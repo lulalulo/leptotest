@@ -1,5 +1,11 @@
 use leptos::*;
 
+#[derive(Debug, Clone)]
+struct DatabaseEntry {
+    key: String,
+    value: i32,
+}
+
 #[component]
 fn ProgressBar(
     #[prop(default = 100)]
