@@ -8,24 +8,23 @@ struct DatabaseEntry {
 
 #[component]
 fn App() -> impl IntoView {
-    let (count, set_count) = create_signal(0);
-    let double_count = move || count() * 2;
-
+    //start with a set of three rows
+    let (data, set_data) = create_signal(vec![
+        DatabaseEntry {
+            key: "foo".to_string(),
+            value: 10,
+        },
+        DatabaseEntry {
+            key: "bar".to_string(),
+            value: 20,
+        }
+        DatabaseEntry {
+            key: "baz".to_string(),
+            value: 15,
+        },
+    ]);
     view! {
-        <button 
-            on:click=move |_| {
-                // on stable, this is set_count.set(3);
-                //set_count.set(3)
-                set_count.update(|n| *n += 1);
-            }
-        >
-            "Click me: "
-            //{move || count.get();}
-            //{move || count()}
-        </button>
-        <ProgressBar progress=count/>
-        // second progress bar
-        <ProgressBar progress=Signal::derive(double_count)/>
+
     }
 }
 
