@@ -7,22 +7,6 @@ struct DatabaseEntry {
 }
 
 #[component]
-fn ProgressBar(
-    #[prop(default = 100)]
-    max: u16,
-    #[prop(into)]
-    progress: Signal<i32>
-) -> impl IntoView 
-{
-    view! {
-        <progress 
-            max=max
-            value=progress
-        />
-    }
-}
-
-#[component]
 fn App() -> impl IntoView {
     let (count, set_count) = create_signal(0);
     let double_count = move || count() * 2;
