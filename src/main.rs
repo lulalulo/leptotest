@@ -1,50 +1,20 @@
 use leptos::*;
 
-#[derive(Debug, Clone)]
-struct DatabaseEntry {
-    key: String,
-    value: i32,
-}
-
 #[component]
-fn App() -> impl IntoView {
-    //start with a set of three rows
-    let (data, set_data) = create_signal(vec![
-        DatabaseEntry {
-            key: "foo".to_string(),
-            value: 10,
-        },
-        DatabaseEntry {
-            key: "bar".to_string(),
-            value: 20,
-        },
-        DatabaseEntry {
-            key: "baz".to_string(),
-            value: 15,
-        },
-    ]);
+pub fn App() -> impl IntoView {
+    let (value, set_value) = create_signal("B".to_string());
     view! {
-        // when we click, update each row
-        // doubling its value
-        <button on:click=move |_| {
-            set_data.update(|data| {
-                for row in data {
-                    row.value *= 2;
-                }
-            });
+        <select on:change=move |env| {
+            let new_value = event_target_value(&env);
+            set_value(new_value);
         }>
-            "Update Values"
-        </button>
-        // iterate over the rows and display each value
-        <For 
-            each=data
-            key=|state| (state.key.clone(), state.value)
-            let:child
-        >
-            <p>{child.value}</p>
-        </For>
+            <SelectOption value is="A"/>
+            <SelectOption value is="B"/>
+            <SelectOption value is="C"/>
+        </select>
     }
 }
+
 
 fn main() {
     leptos::mount_to_body(|| view! { <App/> })
