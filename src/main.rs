@@ -16,14 +16,21 @@ pub fn App() -> impl IntoView {
 }
 
 #[component]
-pub fn SelectOption(is: &'static str, value: ReadSignal<String>) -> impl IntoView {
+pub fn NumericInput() -> impl IntoView {
+    let (value, set_value) = create_signal(Ok(0));
+
+    // when input changes, try to parse a number from the input
+    let on_input = move |ev| set_value(event_target_value(&ev).parse::<i32>());
+
     view! {
-        <option
-            value=is
-            selected=move || value() == is
-        >
-            {is}
-        </option>
+        <label>
+            "Type a number"
+            <input type="number" on:inout=on_input/>
+            <p>
+                "You entered "
+                <strong>{value}</strong>
+            </p>
+        </label>
     }
 }
 
