@@ -15,6 +15,17 @@ pub fn App() -> impl IntoView {
     }
 }
 
+#[component]
+pub fn SelectOption(is: &'static str, value: Readsignal<String>) -> impl IntoView {
+    view! {
+        <option
+            value=is
+            selected=move || value() == is
+        >
+            {is}
+        </option>
+    }
+}
 
 fn main() {
     leptos::mount_to_body(|| view! { <App/> })
