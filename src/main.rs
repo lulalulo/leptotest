@@ -2,8 +2,10 @@ use leptos::*;
 
 #[component]
 pub fn App() -> impl IntoView {
-    view! { 
-        <NumericInput /> 
+    let (toggled, set_toggled) = create_signal(false);
+    view! {
+        <p>"Toggled? " {toggled}</p>
+        <ButtonA setter=set_toggled/>
     }
 }
 
