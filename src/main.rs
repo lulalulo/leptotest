@@ -65,6 +65,19 @@ pub fn Layout() -> impl IntoView {
     }
 }
 
+#[component]
+pub fn Content() -> impl IntoView {
+    view! {
+        <div class="content">
+            <ButtonD/>
+        </div>
+    }
+}
+
+#[component]
+pub fn ButtonD<F>() -> impl IntoView {
+}
+
 fn main() {
     leptos::mount_to_body(|| view! { <App/> })
 }
