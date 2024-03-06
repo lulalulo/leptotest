@@ -76,6 +76,7 @@ pub fn Content() -> impl IntoView {
 
 #[component]
 pub fn ButtonD<F>() -> impl IntoView {
+    todo!()
 }
 
 fn main() {
