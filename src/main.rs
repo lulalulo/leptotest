@@ -6,7 +6,7 @@ pub fn App() -> impl IntoView {
     let (toggled, set_toggled) = create_signal(false);
     view! {
         <p>"Toggled? " {toggled}</p>
-        <ButtonC on:click=move |_| set_toggled.update(|value| *value= !*value)/>
+        <Layout/>
     }
 }
 
@@ -50,6 +50,18 @@ where
 pub fn ButtonC() -> impl IntoView {
     view! {
         <button>"Toggle"</button>
+    }
+}
+
+#[component]
+pub fn Layout() -> impl IntoView {
+    view! {
+        <header>
+            <h1>"My Page"</h1>
+        </header>
+        <main>
+            <Content/>
+        </main>
     }
 }
 
