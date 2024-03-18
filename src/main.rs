@@ -10,11 +10,16 @@ async fn load_data(value: i32) -> i32 {
 
 #[component]
 pub fn App() -> impl IntoView {
-    let (toggled, set_toggled) = create_signal(false);
-    view! {
-        <p>"Toggled? " {toggled}</p>
-        <Layout/>
-    }
+    let count(count: ReadSignal<i32>, set_count: WriteSignal<i32>) = create_signal(0);
+
+    // resource that takes two args after scope
+
+    let async_data: Resource<i32, i32> = create_resource(
+        source: count,
+        fetcher: |value: i32| async move { load_data(value).await },
+    );
+
+
 }
 
 /*
