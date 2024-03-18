@@ -1,5 +1,12 @@
 use leptos::*;
 use leptos::ev::MouseEvent;
+use gloo_timers::future::TimeoutFuture;
+
+async fn load_data(value: i32) -> i32 {
+    //fake a 1 sec delay
+    TimeoutFuture::new(millis: 1_000).await;
+    value * 10
+}
 
 #[component]
 pub fn App() -> impl IntoView {
