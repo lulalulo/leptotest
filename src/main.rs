@@ -4,13 +4,13 @@ use gloo_timers::future::TimeoutFuture;
 
 async fn load_data(value: i32) -> i32 {
     //fake a 1 sec delay
-    TimeoutFuture::new(millis: 1_000).await;
+    TimeoutFuture::new(1_000).await;
     value * 10
 }
 
 #[component]
 pub fn App() -> impl IntoView {
-    let count(count: ReadSignal<i32>, set_count: WriteSignal<i32>) = create_signal(0);
+    let (count: ReadSignal<i32>, set_count: WriteSignal<i32>) = create_signal(0);
 
     // resource that takes two args after scope
 
