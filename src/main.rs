@@ -32,7 +32,25 @@ pub fn App() -> impl IntoView {
     let is_loading: || -> &str = move || if loading() {"Loading"} else { "Idle." };
 
     view! {
-        
+       <button
+           on:click=move |_| {
+               set_count.update(|n| *n += 1);
+           }
+       >
+           "Click me"
+       </button>
+       <p>
+            <code>"stable"</code>": " {move || stable.read()}
+       </p>
+       <p>
+            <code>"count"</code>": " {count}
+       </p>
+        <p>
+            <code>"async_value"</code>": "
+            {async_result}
+            <br/>
+            {is_loading}
+        </p> 
     }
 
 }
