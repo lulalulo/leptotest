@@ -18,6 +18,19 @@ pub fn App() -> impl IntoView {
         source: count,
         fetcher: |value: i32| async move { load_data(value).await },
     );
+    
+    let stable: Resource<(), i32> = create_resource(source: || (), fetcher: |_| async move {load_data(1).await });
+
+    let async_result: || -> String = move || {
+        async_data Resource<i32, i32>
+            .read() Option<i32>
+            .map(|value: i32| format! ("Server returned {value:?}")) Option<String>
+            .unwrap_or_else(|| "Loading...".into())
+    };
+
+    let loading: Signal<bool> = async_data.loading();
+    let is_loading: || -> &str = move || if loading() {"Loading"} else { "Idle." };
+
 
 
 }
