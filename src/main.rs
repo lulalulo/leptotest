@@ -31,7 +31,9 @@ pub fn App() -> impl IntoView {
     let loading: Signal<bool> = async_data.loading();
     let is_loading: || -> &str = move || if loading() {"Loading"} else { "Idle." };
 
-
+    view! {
+        
+    }
 
 }
 
